@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: web-application:
-          image: mevikash/wanderlust-web-application:
+          image: mevikash/web-application:
           ports:
             - containerPort: 3000
 ---
