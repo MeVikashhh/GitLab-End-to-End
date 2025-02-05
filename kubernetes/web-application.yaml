@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-application
+  name: web-application:v1
   namespace: webapplication
   labels:
-    app: web-application
+    app: web-application:v1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: web-application
+      app: web-application:v1
   template:
     metadata:
-      name: web-application
+      name: web-application:v1
       labels:
-        app: web-application
+        app: web-application:v1
     spec:
       containers:
-        - name: web-application
+        - name: web-application:v1
           image: mevikash/web-application:v1
           ports:
             - containerPort: 3000
@@ -27,7 +27,7 @@ kind: Service
 metadata:
   labels:
     app.kubernetes.io/instance: webapplication
-  name: web-application
+  name: web-application:v1
   namespace: webapplication
 spec:
   ports:
@@ -36,5 +36,5 @@ spec:
       protocol: TCP
       targetPort: 3000
   selector:
-    app: web-application
+    app: web-application:v1
   type: NodePort
