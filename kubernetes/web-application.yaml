@@ -25,14 +25,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  labels:
+    app.kubernetes.io/instance: webapplication
   name: web-application
   namespace: webapplication
 spec:
-  type: NodePort
+  ports:
+    - nodePort: 31000
+      port: 3000
+      protocol: TCP
+      targetPort: 3000
   selector:
     app: web-application
-  ports:
-    - port: 3000
-      targetPort: 3000
-      protocol: TCP
-      nodePort: 31000
+  type: NodePort
