@@ -4,20 +4,20 @@ metadata:
   name: web-deployment
   namespace: webapplication
   labels:
-    app: web-application
+    app: web-application:v1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: web-application
+      app: web-application:v1
   template:
     metadata:
-      name: web-application
+      name: web-application:v1
       labels:
-        app: web-application
+        app: web-application:v1
     spec:
       containers:
-        - name: web-application
+        - name: web-application:v1
           image: mevikash/web-application:v1
           ports:
             - containerPort: 3000
@@ -30,7 +30,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: web-application
+    app: web-application:v1
   ports:
     - port: 3000
       targetPort: 3000
